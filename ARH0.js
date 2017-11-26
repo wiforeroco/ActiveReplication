@@ -13,6 +13,36 @@ var lastServedReq = 0;			//Ultima peticion atendida
 var seq;				//Numero de secuencia
 var seqaux;
 var recibido = false;			//Si hemos recibido un mensaje
+
+//=================================PROXY======================================
+
+var responder = zmq.socket('req');
+var auxfunctions = require('./auxfunctions.js');
+
+var endpoint = '4445';
+var id = '0';
+var disponibilidad = 'OK';
+var atencion = 'PROXY RECIBIDO RR0';
+var num = 0;
+
+console.log('ARH ( ' + id + ' ) connected to ' + endpoint);
+console.log('ARH ( ' + id + ' ) has sent READY msg: ' + disponibilidad);
+
+responder.identity = id;
+responder.connect('tcp://127.0.0.1:'+endpoint);
+
+responder.on('message', function() {
+	console.log("ARH ( " + id + " ) has received request: ( " + msgRRJSON + " ) from RR0");
+	//auxfunctions.showArguments(args);
+	setTimeout(function() {
+		console.log("ARH ( " + id + " ) has send its reply");
+		console.log(atencion);
+		console.log("ARH ( " + id + " ) has sent " + (++num) + " replies");
+		responder.send(atencion);
+	}, 1000);
+});
+responder.send(disponibilidad);
+
 //=================================CODIGO======================================
 rp.bind('tcp://127.0.0.1:9020', function(err){	//Bind para reply
 	if(err)console.log(err)

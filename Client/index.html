@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client 0</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <link type="text/css" rel="stylesheet" href="css/jquery.dropdown.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="css/jquery.dropdown.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="css/function.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js">
+    </script>
+    <script type="text/javascript" src="/main.js"></script>
+</head>
+    
+<body>
+    <h2>Active Replication - UPNA 2017</h2>
+
+    <ul>
+    <li> pop (): Removes the last element of the array </ li>
+    <li> shift: Removes the first element of the array </ li>
+    <li> unshift (x): Add the x element to the beginning of the array </ li>
+    <li> push (x): Add the element x to the end of the array </ li>
+    <li> indexOf (x): Find the element x in the Array </ li>
+    </ul> 
+    
+
+    
+    <div class="btn-group">
+      <input type="button" value="Operation" data-jq-dropdown="#jq-dropdown-1" />
+
+        
+    <div id="jq-dropdown-1" class="jq-dropdown jq-dropdown-tip">
+        <ul class="jq-dropdown-menu">
+            <li><a href="#1">pop</a></li>
+            <li><a href="#2">shift</a></li>
+            <li class="jq-dropdown-divider"></li>
+            <li><a href="#3" id="unshift" onclick="clickUnShift()">unshift(x)</a></li>
+            <li><a href="#4" id="push" onclick="clickPush()">push(x)</a></li>
+            <li><a href="#5" id="indexOf" onclick="clickIndexOf()">indexOf(x)</a></li>
+        </ul>
+    </div>
+        
+    <div id="parameterUnshift" style="display: none">
+        <h4>Operation unshift(x) add the x element</h4>
+        <input type="text" name="x_element"  >
+        <input type="button" value="Send" />
+    </div>
+    
+    <div id="parameterPush" style="display: none">
+        <h4>Operation push(x) add the x element</h4>
+        <input type="text" name="x_element"  >
+        <input type="button" value="Send" />
+    </div>   
+        
+    <div id="parameterIndexOf" style="display: none">
+        <h4>Operation indexOf(x) add the x element</h4>
+        <input type="text" name="x_element"  >
+        <input type="button" value="Send"  />
+    </div>   
+    </div>
+    
+    </br>
+    <h4>Imprimir cadena</h4>
+    
+    <div id="messages">
+        
+        
+    </div>
+     
+</body>
+</html>
